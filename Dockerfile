@@ -13,6 +13,7 @@ WORKDIR /app
 RUN apk update && apk --no-cache add bash alpine-sdk libsodium-dev
 COPY --from=builder /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
 COPY --from=builder /usr/local/bin /usr/local/bin
+COPY --from=builder /app /app
 COPY src/ /app/src/
 COPY entrypoint.sh print_config.py /app/
 
